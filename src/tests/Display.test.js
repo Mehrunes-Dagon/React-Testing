@@ -12,4 +12,14 @@ describe('<Display />', () => {
     const div = document.createElement('div');
     ReactDOM.render(<Display />, div);
   });
+  it('returns a display with the className component-display', () => {
+    const wrapper = shallow(<Display />);
+    expect(wrapper.hasClass('component-display')).toBe(true);
+  });
+  it('renders the passed value', () => {
+    const wrapper = shallow(<Display value='5' />);
+    expect(wrapper.text()).toBe('5');
+  });
 });
+
+// wrapper.find('input').simulate('change');

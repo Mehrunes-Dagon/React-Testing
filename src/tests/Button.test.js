@@ -18,12 +18,10 @@ describe('<Button />', () => {
   });
   it("has according className when called with orange", () => {
     const wrapper = shallow(<Button orange />);
-    expect(wrapper.find('.component-button')).toHaveLength(1);
     expect(wrapper.find('.orange')).toHaveLength(1);
   });
   it("has according className when called with wide", () => {
     const wrapper = shallow(<Button wide />);
-    expect(wrapper.find('.component-button')).toHaveLength(1);
     expect(wrapper.find('.wide')).toHaveLength(1);
   });
   it("it calls the function tied to the onClick property when clicked", () => {
