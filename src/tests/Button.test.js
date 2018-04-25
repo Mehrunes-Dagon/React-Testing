@@ -12,4 +12,24 @@ describe('<Button />', () => {
     const div = document.createElement('div');
     ReactDOM.render(<Button />, div);
   });
+  it("has according className when rendered", () => {
+    const wrapper = shallow(<Button />);
+    expect(wrapper.find('.component-button')).toHaveLength(1);
+  });
+  it("has according className when called with orange", () => {
+    const wrapper = shallow(<Button orange />);
+    expect(wrapper.find('.component-button')).toHaveLength(1);
+    expect(wrapper.find('.orange')).toHaveLength(1);
+  });
+  it("has according className when called with wide", () => {
+    const wrapper = shallow(<Button wide />);
+    expect(wrapper.find('.component-button')).toHaveLength(1);
+    expect(wrapper.find('.wide')).toHaveLength(1);
+  });
+  it("it calls the function tied to the onClick property when clicked", () => {
+    const func = sinon.spy();
+    const wrapper = shallow(<Button clickHandler={func} />);
+    wrapper.find('button').simulate('click');
+    expect(func).toHaveProperty('callCount', 1);
+  });
 });
